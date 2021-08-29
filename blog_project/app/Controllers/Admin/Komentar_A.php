@@ -28,6 +28,7 @@ class Komentar_A extends BaseController
         $data = [
             "komentar" => $model->join('tbl_post', 'tbl_post.id_post = tbl_komentar.id_post')->paginate(3, 'komentar'),
             "pager" => $model->pager,
+            "title" => 'Komentar'
         ];
 
         return view('Admin_View/Komentar_Admin/view_komentar', $data);
@@ -44,7 +45,8 @@ class Komentar_A extends BaseController
 
         // Data yang akan dikirim ke view specific
         $data = [
-            "komentar" =>$komentar
+            "komentar" =>$komentar,
+            "title" => 'Komentar'
         ];
 
         return view('Admin_View/Komentar_Admin/view_specific_komentar', $data);

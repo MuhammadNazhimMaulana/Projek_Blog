@@ -19,7 +19,7 @@
                 </a>
 
                 <div class="nav__list">
-                    <a href="<?= site_url('Admin/Pengguna_A/') ?>" class="nav__link active">
+                    <a href="<?= site_url('Admin/Pengguna_A/') ?>" class="nav__link">
                         <i class="fas fa-th-large nav__icon"></i>
                         <span class="nav__name">Dashboard</span>
                     </a>
@@ -29,7 +29,7 @@
                         <span class="nav__name">User</span>
                     </a>
 
-                    <a href="<?= site_url('Admin/Post_A/read') ?>" class="nav__link">
+                    <a href="<?= site_url('Admin/Post_A/read') ?>" class="nav__link <?= $title == 'Post' ? 'active' : ''?>">
                         <i class="fas fa-blog nav__icon"></i>
                         <span class="nav__name">Post</span>
                     </a>
@@ -39,7 +39,7 @@
                         <span class="nav__name">Category</span>
                     </a>
 
-                    <a href="<?= site_url('Admin/Komentar_A/read') ?>" class="nav__link">
+                    <a href="<?= site_url('Admin/Komentar_A/read') ?>" class="nav__link <?= $title == 'Komentar' ? 'active' : ''?>">
                         <i class="far fa-comment-dots nav__icon"></i>
                         <span class="nav__name">Komentar</span>
                     </a>

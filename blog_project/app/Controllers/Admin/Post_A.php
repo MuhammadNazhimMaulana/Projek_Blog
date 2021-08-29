@@ -29,6 +29,7 @@ class Post_A extends BaseController
         $data = [
             "post" => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->paginate(3, 'post'),
             "pager" => $model->pager,
+            'title' => 'Post'
         ];
 
         return view('Admin_View/Post_Admin/view_post', $data);

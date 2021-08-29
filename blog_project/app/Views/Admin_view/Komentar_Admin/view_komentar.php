@@ -24,42 +24,44 @@
           <tbody>
               <?php $i = 1;?>
               <?php foreach ($komentar as $index => $comments) :?>
-            <tr>
-              <td><?= $i++ ?></td>
-              <td><?= $comments->nama_komentator ?></td>
+                <tr>
+                  <td><?= $i++ ?></td>
+                  <td><?= $comments->nama_komentator ?></td>
               <td><?= $comments->judul_post ?></td>
               <td><?= $comments->isi_komentar ?></td>
               <td>
                 <a href="<?= site_url('Admin/Komentar_A/view/' . $comments->id_komentar) ?>" class="btn btn-primary">View</a>
                 <a href="<?= site_url('Admin/Komentar_A/update/' . $comments->id_komentar) ?>" class="btn btn-warning">Update</a>
-                <a href="#modalDelete" data-bs-toggle="modal" onclick="" class="btn btn-danger">Delete</a>
+                <a href="#modalDelete<?= $comments->id_komentar ?>" data-bs-toggle="modal" onclick="" class="btn btn-danger">Delete</a>
               </td>
             </tr>
             <?php endforeach ?>
-        </table>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="modalDelete" tabindex="-1" data-bs-backdrop="static">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Konfirmasi Penghapusan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Apakah Anda yakin akan menghapus data ini?</p>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-danger"><a href="<?= site_url('Admin/Komentar_A/delete/' . $komentar->id_komentar) ?>">Delete</a></button>
+  
+  <!-- Modal -->
+  <?php foreach ($komentar as $index => $comments) :?>
+    <div class="modal fade" id="modalDelete<?= $comments->id_komentar ?>" tabindex="-1" data-bs-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Konfirmasi Penghapusan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Apakah Anda yakin akan menghapus data komentar pada postingan <?= $comments->judul_post ?> ini?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-danger"><a href="<?= site_url('Admin/Komentar_A/delete/' . $comments->id_komentar) ?>">Delete</a></button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
+    <?php endforeach ?>
+    
 
 <?= $this->endSection() ?>

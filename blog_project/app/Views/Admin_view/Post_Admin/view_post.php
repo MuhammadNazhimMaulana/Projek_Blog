@@ -28,47 +28,49 @@
           <tbody>
               <?php $i = 1;?>
               <?php foreach ($post as $index => $posts) :?>
-            <tr>
-              <td><?= $i++ ?></td>
-              <td><?= $posts->nama ?></td>
-              <td><?= $posts->username ?></td>
-              <td><?= $posts->username ?></td>
-              <td><?= $posts->judul_post ?></td>
-              <td><?= $posts->slug ?></td>
-              <td><?= $posts->summary ?></td>
-              <td><?= $posts->body ?></td>
-              <td><img src="<?= base_url('upload/Foto Blog/' . $posts->foto_blog) ?>" alt="" width="100"></td>
-              <td>
-                <a href="<?= site_url('Admin/Post_A/view/' . $posts->id_post) ?>" class="btn btn-primary">View</a>
-                <a href="<?= site_url('Admin/Post_A/update/' . $posts->id_post) ?>" class="btn btn-warning">Update</a>
-                <a href="#modalDelete" data-bs-toggle="modal" onclick="" class="btn btn-danger">Delete</a>
-              </td>
-            </tr>
-            <?php endforeach ?>
-        </table>
+                <tr>
+                  <td><?= $i++ ?></td>
+                  <td><?= $posts->nama ?></td>
+                  <td><?= $posts->username ?></td>
+                  <td><?= $posts->username ?></td>
+                  <td><?= $posts->judul_post ?></td>
+                  <td><?= $posts->slug ?></td>
+                  <td><?= $posts->summary ?></td>
+                  <td><?= $posts->body ?></td>
+                  <td><img src="<?= base_url('upload/Foto Blog/' . $posts->foto_blog) ?>" alt="" width="100"></td>
+                  <td>
+                    <a href="<?= site_url('Admin/Post_A/view/' . $posts->id_post) ?>" class="btn btn-primary">View</a>
+                    <a href="<?= site_url('Admin/Post_A/update/' . $posts->id_post) ?>" class="btn btn-warning">Update</a>
+                    <a href="#modalDelete<?= $posts->id_post ?>" data-bs-toggle="modal" onclick="" class="btn btn-danger">Delete</a>
+                  </td>
+                </tr>
+                <?php endforeach ?>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="modalDelete" tabindex="-1" data-bs-backdrop="static">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Konfirmasi Penghapusan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Apakah Anda yakin akan menghapus data ini?</p>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-danger"><a href="<?= site_url('Admin/Post_A/delete/' . $post->id_post) ?>">Delete</a></button>
-      </div>
-    </div>
-  </div>
-</div>
-
+      
+      <!-- Modal -->
+      <?php foreach ($post as $index => $posts) :?>
+        <div class="modal fade" id="modalDelete<?= $posts->id_post ?>" tabindex="-1" data-bs-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi Penghapusan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Apakah Anda yakin akan menghapus data ini?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger"><a href="<?= site_url('Admin/Post_A/delete/' . $posts->id_post) ?>">Delete</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php endforeach ?>
+        
 
 <?= $this->endSection() ?>
