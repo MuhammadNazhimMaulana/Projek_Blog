@@ -4,7 +4,6 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Post_M;
-use App\Models\Komentar_M;
 use App\Models\Kategory_M;
 use App\Models\Pengguna_M;
 use App\Entities\Post_E;
@@ -28,7 +27,7 @@ class Post_A extends BaseController
         $model = new Post_M();
 
         $data = [
-            "post" => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->join('tbl_komentar', 'tbl_komentar.id_komentar = tbl_post.id_komentar')->paginate(3, 'post'),
+            "post" => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->paginate(3, 'post'),
             "pager" => $model->pager,
         ];
 
@@ -43,7 +42,7 @@ class Post_A extends BaseController
 
         $model = new Post_M();
 
-        $post = $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->join('tbl_komentar', 'tbl_komentar.id_komentar = tbl_post.id_komentar')->where('tbl_post.id_post', $id_post)->first();
+        $post = $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->where('tbl_post.id_post', $id_post)->first();
 
         $data = [
             'post' => $post,
@@ -61,17 +60,7 @@ class Post_A extends BaseController
 
         // Buat looping
         foreach ($kategory as $category) {
-            $list_kategory[$category->id_kategory] = $category->nama;
-        }
-
-        // Dapatkan Semua data
-        $model_komentar = new Komentar_M();
-        $komentar = $model_komentar->findAll();
-        $list_komentar = [];
-
-        // Buat looping
-        foreach ($komentar as $comment) {
-            $list_komentar[$comment->id_komentar] = $comment->nama_buku;
+            $list_kategory[$category->id_kategory] = $category->nama_kategori;
         }
 
         // Dapatkan Semua data
@@ -86,7 +75,6 @@ class Post_A extends BaseController
 
         $data = [
             'daftar_kategory' => $list_kategory,
-            'daftar_komentar' => $list_komentar,
             'daftar_pengguna' => $list_pengguna,
         ];
 
@@ -100,19 +88,23 @@ class Post_A extends BaseController
                 // Simpan data
                 $model = new Post_M();
 
+                $post = new Post_E();
+
                 // Fill untuk assign value data
                 $post->fill($data_post);
+                $post->foto_blog = $this->request->getFile('foto_blog');
                 $post->created_at = date("Y-m-d H:i:s");
 
                 $model->save($post);
 
                 $id_post = $model->insertID();
 
-                $segments = ['admin', 'borrow', 'view', $id_post];
+                $segments = ['Admin', 'Post_A', 'view', $id_post];
 
                 // Akan redirect ke /Admin/post_A/view/$id_post
                 return redirect()->to(base_url($segments));
             }
+            $this->session->setFlashdata('errors', $errors);
         }
         return view('Admin_View/Post_Admin/create_post', $data);
     }
@@ -123,7 +115,7 @@ class Post_A extends BaseController
 
         $model = new Post_M();
 
-        $post = $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->join('tbl_komentar', 'tbl_komentar.id_komentar = tbl_post.id_komentar')->where('tbl_post.id_post', $id_post)->first();
+        $post = $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->where('tbl_post.id_post', $id_post)->first();
 
         // Dapatkan Semua data
         $model_kategory = new Kategory_M();
@@ -132,17 +124,7 @@ class Post_A extends BaseController
 
         // Buat looping
         foreach ($kategory as $category) {
-            $list_kategory[$category->id_kategory] = $category->nama;
-        }
-
-        // Dapatkan Semua data
-        $model_komentar = new Komentar_M();
-        $komentar = $model_komentar->findAll();
-        $list_komentar = [];
-
-        // Buat looping
-        foreach ($komentar as $comment) {
-            $list_komentar[$comment->id_komentar] = $comment->nama_buku;
+            $list_kategory[$category->id_kategory] = $category->nama_kategori;
         }
 
         // Dapatkan Semua data
@@ -158,7 +140,6 @@ class Post_A extends BaseController
         $data_post = [
             'post' => $post,
             'daftar_kategory' => $list_kategory,
-            'daftar_komentar' => $list_komentar,
             'daftar_pengguna' => $list_pengguna,
         ];
 
@@ -172,11 +153,15 @@ class Post_A extends BaseController
                 $post->id_post = $id_post;
                 $post->fill($data);
 
+                if ($this->request->getFile('foto_blog')->isValid()) {
+                    $post->foto_blog = $this->request->getFile('foto_blog');
+                }
+
                 $post->updated_at = date("Y-m-d H:i:s");
 
                 $model->save($post);
 
-                $segments = ['admin', 'borrow', 'view', $id_post];
+                $segments = ['Admin', 'Post_A', 'view', $id_post];
 
                 return redirect()->to(base_url($segments));
             }

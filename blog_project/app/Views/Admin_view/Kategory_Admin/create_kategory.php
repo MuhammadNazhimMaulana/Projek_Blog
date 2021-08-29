@@ -2,16 +2,16 @@
 <?= $this->section('content_admin') ?>
 <?php
     
-    $nama = [
-        'name' => 'nama',
-        'id' => 'nama',
+    $nama_kategori = [
+        'name' => 'nama_kategori',
+        'id' => 'nama_kategori',
         'value' => null,
         'class' => 'form-control'
     ];
 
-    $slug = [
-        'name' => 'slug',
-        'id' => 'slug',
+    $slug_kategori = [
+        'name' => 'slug_kategori',
+        'id' => 'slug_kategori',
         'value' => null,
         'class' => 'form-control',
     ];
@@ -52,12 +52,12 @@ $errors = $session->getFlashdata('errors');
                 <!-- Membuat Form dengan Form Helper -->
                 <?= form_open('Admin/Kategory_A/create') ?>
                 <div class="form-group mt-3">
-                    <?= form_label("Nama Kategori", "nama") ?>
-                    <?= form_input($nama) ?>
+                    <?= form_label("Nama Kategori", "nama_kategori") ?>
+                    <?= form_input($nama_kategori) ?>
                 </div>
                 <div class="form-group mt-3">
-                    <?= form_label("Slug", "slug") ?>
-                    <?= form_input($slug) ?>
+                    <?= form_label("Slug", "slug_kategori") ?>
+                    <?= form_input($slug_kategori) ?>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
                 <!-- Form submit terkait submit-->

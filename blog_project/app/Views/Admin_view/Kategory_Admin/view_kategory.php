@@ -25,8 +25,8 @@
               <?php foreach ($kategory as $index => $categories) :?>
             <tr>
               <td><?= $i++ ?></td>
-              <td><?= $categories->nama ?></td>
-              <td><?= $categories->slug ?></td>
+              <td><?= $categories->nama_kategori ?></td>
+              <td><?= $categories->slug_kategori ?></td>
               <td>
                 <a href="<?= site_url('Admin/Kategory_A/view/' . $categories->id_kategory) ?>" class="btn btn-primary">View</a>
                 <a href="<?= site_url('Admin/Kategory_A/update/' . $categories->id_kategory) ?>" class="btn btn-warning">Update</a>

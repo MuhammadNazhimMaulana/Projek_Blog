@@ -17,7 +17,6 @@
               <th scope="col">No</th>
               <th scope="col">Nama Kategory</th>
               <th scope="col">Nama Penulis</th>
-              <th scope="col">Komentar</th>
               <th scope="col">Judul Postingan</th>
               <th scope="col">Slug</th>
               <th scope="col">Summary</th>
@@ -38,7 +37,7 @@
               <td><?= $posts->slug ?></td>
               <td><?= $posts->summary ?></td>
               <td><?= $posts->body ?></td>
-              <td><?= $posts->foto_blog ?></td>
+              <td><img src="<?= base_url('upload/Foto Blog/' . $posts->foto_blog) ?>" alt="" width="100"></td>
               <td>
                 <a href="<?= site_url('Admin/Post_A/view/' . $posts->id_post) ?>" class="btn btn-primary">View</a>
                 <a href="<?= site_url('Admin/Post_A/update/' . $posts->id_post) ?>" class="btn btn-warning">Update</a>
@@ -65,7 +64,7 @@
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-danger"><a href="<?= site_url('Admin/Post_A/delete/') ?>">Delete</a></button>
+          <button class="btn btn-danger"><a href="<?= site_url('Admin/Post_A/delete/' . $post->id_post) ?>">Delete</a></button>
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Komentar_M;
+use App\Models\Post_M;
 use App\Entities\Komentar_E;
 
 class Komentar_A extends BaseController
@@ -25,7 +26,7 @@ class Komentar_A extends BaseController
         $model = new Komentar_M();
 
         $data = [
-            "komentar" => $model->paginate(3, 'komentar'),
+            "komentar" => $model->join('tbl_post', 'tbl_post.id_post = tbl_komentar.id_post')->paginate(3, 'komentar'),
             "pager" => $model->pager,
         ];
 
@@ -39,7 +40,7 @@ class Komentar_A extends BaseController
 
         $model = new Komentar_M();
 
-       $komentar = $model->find($id_komentar);
+       $komentar = $model->join('tbl_post', 'tbl_post.id_post = tbl_komentar.id_post')->find($id_komentar);
 
         // Data yang akan dikirim ke view specific
         $data = [
@@ -51,6 +52,20 @@ class Komentar_A extends BaseController
 
     public function create()
     {
+        // Dapatkan Semua data
+        $model_postingan = new Post_M();
+        $post = $model_postingan->findAll();
+        $list_post = [];
+
+        // Buat looping
+        foreach ($post as $postingan) {
+            $list_post[$postingan->id_post] = $postingan->judul_post;
+        }
+
+        $data_komentar = [
+            'daftar_postingan' => $list_post,
+        ];
+
         if ($this->request->getPost()) {
             // Jikalau ada data di post
             $data = $this->request->getPost();
@@ -80,7 +95,7 @@ class Komentar_A extends BaseController
 
             $this->session->setFlashdata('errors', $errors);
         }
-        return view('Admin_View/Komentar_Admin/create_komentar');
+        return view('Admin_View/Komentar_Admin/create_komentar', $data_komentar);
     }
 
     public function update()
@@ -89,10 +104,21 @@ class Komentar_A extends BaseController
 
         $model = new Komentar_M();
 
-       $komentar = $model->find($id_komentar);
+       $komentar = $model->join('tbl_post', 'tbl_post.id_post = tbl_komentar.id_post')->find($id_komentar);
+        
+       // Dapatkan Semua data
+        $model_postingan = new Post_M();
+        $post = $model_postingan->findAll();
+        $list_post = [];
+
+        // Buat looping
+        foreach ($post as $postingan) {
+            $list_post[$postingan->id_post] = $postingan->judul_post;
+        }
 
         $data = [
-            'komentar' =>$komentar
+            'komentar' =>$komentar,
+            'daftar_postingan' => $list_post,
         ];
 
         if ($this->request->getPost()) {

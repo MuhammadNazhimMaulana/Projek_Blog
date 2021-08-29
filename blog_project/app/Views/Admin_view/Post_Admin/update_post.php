@@ -6,41 +6,43 @@
         'name' => 'id_kategory',
         'id' => 'id_kategory',
         'options' => $daftar_kategory,
-        'class' => 'form-control'
+        'class' => 'form-control',
+        'selected' => $post->id_kategory
     ];
     
     $id_pengguna = [
         'name' => 'id_pengguna',
         'id' => 'id_pengguna',
         'options' => $daftar_pengguna,
-        'class' => 'form-control'
+        'class' => 'form-control',
+        'selected' => $post->id_pengguna
     ];
 
     $judul_post = [
         'name' => 'judul_post',
         'id' => 'judul_post',
-        'value' => null,
+        'value' => $post->judul_post,
         'class' => 'form-control'
     ];
 
     $slug = [
         'name' => 'slug',
         'id' => 'slug',
-        'value' => null,
+        'value' => $post->slug,
         'class' => 'form-control',
     ];
 
     $summary = [
         'name' => 'summary',
         'id' => 'summary',
-        'value' => null,
+        'value' => $post->summary,
         'class' => 'form-control'
     ];
 
     $body = [
         'name' => 'body',
         'id' => 'body',
-        'value' => null,
+        'value' => $post->body,
         'class' => 'form-control',
     ];
 
@@ -64,8 +66,8 @@ $session = session();
 $errors = $session->getFlashdata('errors');
 ?>
 
-<div class="container mt-4 vh-100">
-    <div class="row justify-content-center h-100">
+<div class="container mt-4 vh-200 mb-4">
+    <div class="row justify-content-center h-200">
         <div class="card w-50 my-auto">
             <div class="card-header text-center">
                 <h1>Form Tambah Postingan</h1>
@@ -86,7 +88,7 @@ $errors = $session->getFlashdata('errors');
                 <?php endif ?>
 
                 <!-- Membuat Form dengan Form Helper -->
-                <?= form_open_multipart('Admin/Post_A/create') ?>
+                <?= form_open_multipart('Admin/Post_A/update/' . $post->id_post) ?>
 
                 <div class="form-group mt-3">
                         <?= form_label("Nama Kategori", "id_kategory") ?>
@@ -117,7 +119,11 @@ $errors = $session->getFlashdata('errors');
                     <?= form_label("Isi Postingan", "body") ?>
                     <?= form_input($body) ?>
                 </div>
-                
+
+                <div class="text-center">
+                        <img class="img-fluid mb-3 mt-3" width="100" src="<?= base_url('upload/Foto Blog/' . $post->foto_blog) ?>" alt="image">
+                </div>
+
                 <div class="form-group mt-3">
                         <?= form_label("Foto Postingan", "foto_blog") ?>
 

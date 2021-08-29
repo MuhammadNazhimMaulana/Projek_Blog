@@ -98,42 +98,45 @@ class Validation
 	];
 
 	public $kategory = [
-		'nama' => [
+		'nama_kategori' => [
 			'rules' => 'required',
 		],
-		'slug' => [
+		'slug_kategori' => [
 			'rules' => 'required',
 		],
 	];
 
 	public $kategory_errors = [
-		'nama' => [
+		'nama_kategori' => [
 			'required' => '{field} Harus diisi',
 		],
-		'slug' => [
+		'slug_kategori' => [
 			'required' => '{field} Harus diisi',
 		],
 	];
 
 	public $kategory_update = [
-		'nama' => [
+		'nama_kategori' => [
 			'rules' => 'required',
 		],
-		'slug' => [
+		'slug_kategori' => [
 			'rules' => 'required',
 		],
 	];
 
 	public $kategory_update_errors = [
-		'nama' => [
+		'nama_kategori' => [
 			'required' => '{field} Harus diisi',
 		],
-		'slug' => [
+		'slug_kategori' => [
 			'required' => '{field} Harus diisi',
 		],
 	];
 
 	public $komentar = [
+		'id_post' => [
+			'rules' => 'required',
+		],
 		'nama_komentator' => [
 			'rules' => 'required',
 		],
@@ -143,6 +146,9 @@ class Validation
 	];
 
 	public $komentar_errors = [
+		'id_post' => [
+			'required' => '{field} Harus diisi',
+		],
 		'nama_komentator' => [
 			'required' => '{field} Harus diisi',
 		],
@@ -152,6 +158,9 @@ class Validation
 	];
 
 	public $komentar_update = [
+		'id_post' => [
+			'rules' => 'required',
+		],
 		'nama_komentator' => [
 			'rules' => 'required',
 		],
@@ -161,6 +170,9 @@ class Validation
 	];
 
 	public $komentar_update_errors = [
+		'id_post' => [
+			'required' => '{field} Harus diisi',
+		],
 		'nama_komentator' => [
 			'required' => '{field} Harus diisi',
 		],
@@ -189,7 +201,7 @@ class Validation
 			'rules' => 'required',
 		],
 		'foto_blog' => [
-			'rules' => 'required',
+			'rules' => 'uploaded[foto_blog]',
 		],
 	];
 
@@ -213,7 +225,7 @@ class Validation
 			'required' => '{field} Harus diisi',
 		],
 		'foto_blog' => [
-			'required' => '{field} Harus diisi',
+			'uploaded' => '{field} Harus diupload',
 		],
 	];
 

@@ -1,7 +1,15 @@
 <?= $this->extend('Dashboards/Dashboard_Admin') ?>
 <?= $this->section('content_admin') ?>
 <?php
-    
+
+    $id_post = [
+        'name' => 'id_post',
+        'id' => 'id_post',
+        'options' => $daftar_postingan,
+        'class' => 'form-control',
+        'selected' => $komentar->id_post
+    ];    
+
     $nama_komentator = [
         'name' => 'nama_komentator',
         'id' => 'nama_komentator',
@@ -51,18 +59,27 @@ $errors = $session->getFlashdata('errors');
 
                 <!-- Membuat Form dengan Form Helper -->
                 <?= form_open('Admin/Komentar_A/update/' . $komentar->id_komentar) ?>
+
+                <div class="form-group mt-3">
+                        <?= form_label("Judul Postingan", "id_post") ?>
+                        <?= form_dropdown($id_post) ?>
+                </div>
+
                 <div class="form-group mt-3">
                     <?= form_label("Nama Komentator", "nama_komentator") ?>
                     <?= form_input($nama_komentator) ?>
                 </div>
+
                 <div class="form-group mt-3">
                     <?= form_label("Isi Komentar", "isi_komentar") ?>
                     <?= form_input($isi_komentar) ?>
                 </div>
+
                 <div class="d-flex justify-content-end mt-3">
                 <!-- Form submit terkait submit-->
                 <?= form_submit($submit) ?>
                 </div>
+
                 <?= form_close() ?>
             </div>
             <div class="card-footer">

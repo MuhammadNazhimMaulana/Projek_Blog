@@ -16,6 +16,7 @@
             <tr>
               <th scope="col">No</th>
               <th scope="col">Nama Komentator</th>
+              <th scope="col">Judul Postingan</th>
               <th scope="col">Isi Komentar</th>
               <th scope="col">Aksi</th>
             </tr>
@@ -26,6 +27,7 @@
             <tr>
               <td><?= $i++ ?></td>
               <td><?= $comments->nama_komentator ?></td>
+              <td><?= $comments->judul_post ?></td>
               <td><?= $comments->isi_komentar ?></td>
               <td>
                 <a href="<?= site_url('Admin/Komentar_A/view/' . $comments->id_komentar) ?>" class="btn btn-primary">View</a>
@@ -53,7 +55,7 @@
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-danger"><a href="<?= site_url('Admin/Komentar_A/delete/' . $comments->id_komentar) ?>">Delete</a></button>
+          <button class="btn btn-danger"><a href="<?= site_url('Admin/Komentar_A/delete/' . $komentar->id_komentar) ?>">Delete</a></button>
       </div>
     </div>
   </div>
