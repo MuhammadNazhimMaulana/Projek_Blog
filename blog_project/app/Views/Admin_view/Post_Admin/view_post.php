@@ -47,6 +47,9 @@
                 <?php endforeach ?>
               </table>
             </div>
+              <div class="card-footer">
+                <?= $pager->links('post', 'custom_pagination') ?>
+              </div>
           </div>
         </div>
       </div>

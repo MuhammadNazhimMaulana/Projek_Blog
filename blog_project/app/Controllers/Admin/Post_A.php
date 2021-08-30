@@ -47,6 +47,7 @@ class Post_A extends BaseController
 
         $data = [
             'post' => $post,
+            'title' => 'Post'
         ];
 
         return view('Admin_View/Post_Admin/view_specific_post', $data);
@@ -77,6 +78,7 @@ class Post_A extends BaseController
         $data = [
             'daftar_kategory' => $list_kategory,
             'daftar_pengguna' => $list_pengguna,
+            'title' => 'Post'
         ];
 
         if ($this->request->getPost()) {
@@ -142,6 +144,7 @@ class Post_A extends BaseController
             'post' => $post,
             'daftar_kategory' => $list_kategory,
             'daftar_pengguna' => $list_pengguna,
+            'title' => 'Post'
         ];
 
         if ($this->request->getPost()) {

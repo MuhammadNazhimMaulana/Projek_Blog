@@ -25,10 +25,18 @@ class Komentar_A extends BaseController
     {
         $model = new Komentar_M();
 
+        $keyword = '';
+
+        if($this->request->getPost())
+        {
+            $keyword = $this->request->getPost('keyword');
+        }
+
         $data = [
-            "komentar" => $model->join('tbl_post', 'tbl_post.id_post = tbl_komentar.id_post')->paginate(3, 'komentar'),
+            "komentar" => $model->join('tbl_post', 'tbl_post.id_post = tbl_komentar.id_post')->like('tbl_komentar.nama_komentator', $keyword)->paginate(3, 'komentar'),
             "pager" => $model->pager,
-            "title" => 'Komentar'
+            "title" => 'Komentar',
+            "keyword" => $keyword
         ];
 
         return view('Admin_View/Komentar_Admin/view_komentar', $data);
@@ -66,6 +74,7 @@ class Komentar_A extends BaseController
 
         $data_komentar = [
             'daftar_postingan' => $list_post,
+            "title" => 'Komentar'
         ];
 
         if ($this->request->getPost()) {
@@ -121,6 +130,7 @@ class Komentar_A extends BaseController
         $data = [
             'komentar' =>$komentar,
             'daftar_postingan' => $list_post,
+            "title" => 'Komentar'
         ];
 
         if ($this->request->getPost()) {

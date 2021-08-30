@@ -22,7 +22,11 @@ class Pengguna_A extends BaseController
 
     public function index()
     {
-        return view('Dashboards/Dashboard_Admin');
+        $data = [
+            "title" => 'Dashboard'
+        ];
+
+        return view('Admin_View/Profile_Admin/home_admin', $data);
     }
 
     public function profile(){
@@ -35,7 +39,8 @@ class Pengguna_A extends BaseController
 
         // Data yang akan dikirim ke view specific
         $data = [
-            "profile" =>$profile
+            "profile" =>$profile,
+            "title" => 'Pengguna'
         ];
 
         return view('Admin_View/Profile_Admin/view_profile', $data);

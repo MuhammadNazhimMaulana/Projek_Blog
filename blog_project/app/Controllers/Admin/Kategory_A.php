@@ -24,9 +24,18 @@ class Kategory_A extends BaseController
     {
         $model = new Kategory_M();
 
+        $keyword = '';
+
+        if($this->request->getPost())
+        {
+            $keyword = $this->request->getPost('keyword');
+        }
+
         $data = [
-            "kategory" => $model->paginate(3, 'kategory'),
+            "kategory" => $model->like('tbl_kategory.nama_kategori', $keyword)->paginate(3, 'kategory'),
             "pager" => $model->pager,
+            "title" => 'Kategory',
+            "keyword" => $keyword
         ];
 
         return view('Admin_View/Kategory_Admin/view_kategory', $data);
@@ -43,7 +52,8 @@ class Kategory_A extends BaseController
 
         // Data yang akan dikirim ke view specific
         $data = [
-            "kategory" =>$kategory
+            "kategory" =>$kategory,
+            "title" => 'Kategory'
         ];
 
         return view('Admin_View/Kategory_Admin/view_specific_kategory', $data);
@@ -51,6 +61,10 @@ class Kategory_A extends BaseController
 
     public function create()
     {
+        $data_kategory = [
+            "title" => 'Kategory'
+        ];
+
         if ($this->request->getPost()) {
             // Jikalau ada data di post
             $data = $this->request->getPost();
@@ -80,7 +94,7 @@ class Kategory_A extends BaseController
 
             $this->session->setFlashdata('errors', $errors);
         }
-        return view('Admin_View/Kategory_Admin/create_kategory');
+        return view('Admin_View/Kategory_Admin/create_kategory', $data_kategory);
     }
 
     public function update()
@@ -92,7 +106,8 @@ class Kategory_A extends BaseController
        $kategory = $model->find($id_kategory);
 
         $data = [
-            'kategory' =>$kategory
+            'kategory' =>$kategory,
+            "title" => 'Kategory'
         ];
 
         if ($this->request->getPost()) {

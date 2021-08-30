@@ -1,5 +1,22 @@
 <?= $this->extend('Dashboards/Dashboard_Admin') ?>
 <?= $this->section('content_admin') ?>
+<?php 
+$keyword = [
+  'name' => 'keyword',
+  'value' => $keyword,
+  'placeholder' => 'Keyword Pencarian...',
+  'class' => 'form-control',
+  'type' => 'text'
+];
+
+$submit = [
+  'name' => 'submit',
+  'value' => 'Cari',
+  'type' =>'submit',
+  'class' => 'btn btn-outline-secondary'
+];
+
+  ?>
 
 <h1 class="text-center">Komentar</h1>
 
@@ -9,8 +26,22 @@
       <div class="card-header"></div>
       <div class="card-body">
         <a href="<?= site_url('Admin/Komentar_A/create') ?>" class="btn btn-success">Tambah Komentar</a>
-        <h5 class="card-title text-center">Daftar Seluruh Komentar</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title text-center mb-3">Daftar Seluruh Komentar</h5>
+
+        <!-- Awal Searching -->
+        <?= form_open('Admin/Komentar_A/read') ?>
+        <div class="input-group mb-3">
+              <div>
+                <?= form_input($keyword) ?>
+              </div>
+              <div>
+                <?= form_submit($submit) ?>
+              </div>
+        </div>
+        <?= form_close() ?>
+        <!-- Akhir Searching -->
+
+        <p class="card-text mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <table class="table text-center">
           <thead>
             <tr>
@@ -38,6 +69,9 @@
             <?php endforeach ?>
           </table>
         </div>
+          <div class="card-footer">
+            <?= $pager->links('komentar', 'custom_pagination') ?>
+          </div>
       </div>
     </div>
   </div>

@@ -19,12 +19,12 @@
                 </a>
 
                 <div class="nav__list">
-                    <a href="<?= site_url('Admin/Pengguna_A/') ?>" class="nav__link">
+                    <a href="<?= site_url('Admin/Pengguna_A/') ?>" class="nav__link <?= $title == 'Dashboard' ? 'active' : ''?>">
                         <i class="fas fa-th-large nav__icon"></i>
                         <span class="nav__name">Dashboard</span>
                     </a>
 
-                    <a href="<?= site_url('Admin/Pengguna_A/profile') ?>" class="nav__link">
+                    <a href="<?= site_url('Admin/Pengguna_A/profile') ?>" class="nav__link <?= $title == 'Pengguna' ? 'active' : ''?>">
                         <i class="fas fa-user nav__icon"></i>
                         <span class="nav__name">User</span>
                     </a>
@@ -34,7 +34,7 @@
                         <span class="nav__name">Post</span>
                     </a>
 
-                    <a href="<?= site_url('Admin/Kategory_A/read') ?>" class="nav__link">
+                    <a href="<?= site_url('Admin/Kategory_A/read') ?>" class="nav__link <?= $title == 'Kategory' ? 'active' : ''?>">
                         <i class="fas fa-th nav__icon"></i>
                         <span class="nav__name">Category</span>
                     </a>
