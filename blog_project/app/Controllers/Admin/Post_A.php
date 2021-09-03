@@ -26,10 +26,18 @@ class Post_A extends BaseController
     {
         $model = new Post_M();
 
+        $keyword = '';
+
+        if($this->request->getPost())
+        {
+            $keyword = $this->request->getPost('keyword');
+        }
+
         $data = [
-            "post" => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->paginate(3, 'post'),
+            "post" => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->like('tbl_post.judul_post', $keyword)->paginate(3, 'post'),
             "pager" => $model->pager,
-            'title' => 'Post'
+            'title' => 'Post',
+            "keyword" => $keyword
         ];
 
         return view('Admin_View/Post_Admin/view_post', $data);

@@ -268,9 +268,9 @@ a {
 
 /* For Admin Panel */
 .penampung {
-  margin-left: 70px;
+  margin-left: 40px;
   margin-top: 50px;
-  width: 1300px;
+  max-width: 95%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -279,6 +279,7 @@ a {
 .penampung .kotak {
   position: relative;
   width: 400px;
+  height: 400px;
   background: cornflowerblue;
   padding: 50px 40px 60px;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
@@ -339,3 +340,5 @@ a {
 .penampung .kotak:hover p {
   color: #fff;
 }
+
+/* Untuk Search */

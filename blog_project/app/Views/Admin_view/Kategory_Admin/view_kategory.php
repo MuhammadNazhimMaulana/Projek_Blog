@@ -30,7 +30,7 @@ $submit = [
 
         <!-- Awal Searching -->
         <?= form_open('Admin/Kategory_A/read') ?>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 justify-content-end">
               <div>
                 <?= form_input($keyword) ?>
               </div>

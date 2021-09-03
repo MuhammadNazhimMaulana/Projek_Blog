@@ -1,5 +1,22 @@
 <?= $this->extend('Dashboards/Dashboard_Admin') ?>
 <?= $this->section('content_admin') ?>
+<?php 
+$keyword = [
+  'name' => 'keyword',
+  'value' => $keyword,
+  'placeholder' => 'Keyword Pencarian...',
+  'class' => 'form-control',
+  'type' => 'text'
+];
+
+$submit = [
+  'name' => 'submit',
+  'value' => 'Cari',
+  'type' =>'submit',
+  'class' => 'btn btn-outline-secondary'
+];
+
+?>
 
 <h1 class="text-center">Post</h1>
 
@@ -10,6 +27,20 @@
       <div class="card-body">
         <a href="<?= site_url('Admin/Post_A/create') ?>" class="btn btn-success">Tambah Postingan</a>
         <h5 class="card-title text-center">Daftar Seluruh Postingan</h5>
+
+        <!-- Awal Searching -->
+        <?= form_open('Admin/Post_A/read') ?>
+        <div class="input-group mb-3 justify-content-end">
+              <div>
+                <?= form_input($keyword) ?>
+              </div>
+              <div>
+                <?= form_submit($submit) ?>
+              </div>
+        </div>
+        <?= form_close() ?>
+        <!-- Akhir Searching -->
+
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <table class="table text-center">
           <thead>
@@ -31,7 +62,6 @@
                 <tr>
                   <td><?= $i++ ?></td>
                   <td><?= $posts->nama ?></td>
-                  <td><?= $posts->username ?></td>
                   <td><?= $posts->username ?></td>
                   <td><?= $posts->judul_post ?></td>
                   <td><?= $posts->slug ?></td>
