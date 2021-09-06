@@ -235,3 +235,123 @@ body {
     margin-top: 10%;
   }
 }
+
+/* Konten */
+.konten {
+  width: 90%;
+  margin: 30px auto 30px;
+}
+
+.konten .konten-utama {
+  width: 70%;
+  float: left;
+}
+
+.konten .konten-utama .postingan {
+  width: 95%;
+  height: 270px;
+  margin: 25px auto;
+  border-radius: 5px;
+  background: white;
+  position: relative;
+}
+
+.konten .konten-utama .postingan .read-more {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: 1px solid steelblue;
+  border-radius: 0px;
+  color: steelblue;
+}
+
+.konten .konten-utama .postingan .read-more:hover {
+  background: steelblue;
+  color: white;
+  transition: 0.25s;
+}
+
+.konten .konten-utama .postingan .gambar-postingan {
+  width: 40%;
+  height: 100%;
+  float: left;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.konten .konten-utama .postingan .preview-postingan {
+  width: 60%;
+  padding: 15px;
+  float: right;
+}
+
+.konten .konten-utama .postingan .preview-postingan i {
+  color: black;
+  font-size: 0.8em;
+}
+
+.konten .konten-utama .postingan .preview-postingan {
+  line-height: 1.5em;
+  font-size: 1.03em;
+  color: black;
+}
+
+.btn-baca {
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: white;
+}
+
+.konten .konten-utama .judul-postingan-baru {
+  margin: 20px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Konten Sampingan */
+.konten .konten-sampingan {
+  width: 30%;
+  float: left;
+  height: 300px;
+}
+
+.konten .konten-sampingan .section {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.konten .konten-sampingan .section .judul-section {
+  margin: 10px 0px 10px 0px;
+}
+
+.konten .konten-sampingan .section.pencarian {
+  margin-top: 80px;
+}
+
+.konten .konten-sampingan .section.kategories ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+.konten .konten-sampingan .section.kategories ul li a {
+  display: block;
+  padding: 15px 0px 15px 0px;
+  border-bottom: 1px solid #e0e0e0;
+  transition: all 0.3s;
+}
+
+.konten .konten-sampingan .section.kategories ul li a:hover {
+  padding-left: 10px;
+  transition: all 0.3s;
+}

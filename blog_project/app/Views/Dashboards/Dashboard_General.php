@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <?= $this->include('Template/Header/Header_User') ?>
+    <?= $this->include('Template/Header/Header_Reader') ?>
 
     <!-- Awal Main -->
     <main>
@@ -181,7 +181,7 @@
     <!-- Akhir Main -->
 
     <!-- Ini Footer -->
-    <?= $this->include('Template/Footer/Footer_User') ?>    
+    <?= $this->include('Template/Footer/Footer_Reader') ?>    
 
     <script src="<?= base_url('bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 </body>
