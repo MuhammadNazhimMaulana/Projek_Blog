@@ -26,6 +26,8 @@ class Post_R extends BaseController
     {
         $model = new Post_M();
 
+        $model_kategory = new Kategory_M();
+
         $keyword = '';
 
         if($this->request->getPost())
@@ -36,6 +38,7 @@ class Post_R extends BaseController
         $data = [
             "post" => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->like('tbl_post.judul_post', $keyword)->paginate(3, 'post'),
             "pager" => $model->pager,
+            'kategory' => $model_kategory->paginate(3, 'kategory'),
             'title' => 'Post',
             "keyword" => $keyword
         ];
@@ -51,10 +54,15 @@ class Post_R extends BaseController
 
         $model = new Post_M();
 
+        $model_kategory = new Kategory_M();
+
         $post = $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->where('tbl_post.id_post', $id_post)->first();
 
         $data = [
             'post' => $post,
+            'postingan' => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->paginate(3, 'post'),
+            'pager' => $model->pager,
+            'kategory' => $model_kategory->paginate(3, 'kategory'),
             'title' => 'Post'
         ];
 

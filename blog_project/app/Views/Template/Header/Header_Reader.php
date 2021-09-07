@@ -13,10 +13,10 @@
                         <a href="#" class="nav-link <?= $title == 'Dashboard' ? 'active' : ''?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= site_url('Reader/Post_R/read') ?>" class="nav-link">Post</a>
+                        <a href="<?= site_url('Reader/Post_R/read') ?>" class="nav-link <?= $title == 'Post' ? 'active' : ''?>">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Kategori</a>
+                        <a href="<?= site_url('Reader/Kategory_R/read') ?>" class="nav-link <?= $title == 'Kategory' ? 'active' : ''?>">Kategori</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Gallery</a>

@@ -252,7 +252,7 @@ body {
   height: 270px;
   margin: 25px auto;
   border-radius: 5px;
-  background: white;
+  background: steelblue;
   position: relative;
 }
 
@@ -285,15 +285,20 @@ body {
   float: right;
 }
 
+.konten .konten-utama .postingan .preview-postingan h2 a {
+  text-decoration: none;
+  color: white;
+}
+
 .konten .konten-utama .postingan .preview-postingan i {
-  color: black;
+  color: white;
   font-size: 0.8em;
 }
 
 .konten .konten-utama .postingan .preview-postingan {
   line-height: 1.5em;
   font-size: 1.03em;
-  color: black;
+  color: white;
 }
 
 .btn-baca {
@@ -323,7 +328,7 @@ body {
 }
 
 .konten .konten-sampingan .section {
-  background: white;
+  background: steelblue;
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -334,7 +339,12 @@ body {
 }
 
 .konten .konten-sampingan .section.pencarian {
-  margin-top: 80px;
+  margin-top: 93px;
+  color: white;
+}
+
+.konten .konten-sampingan .section.kategories .judul-section {
+  color: white;
 }
 
 .konten .konten-sampingan .section.kategories ul {
@@ -349,9 +359,56 @@ body {
   padding: 15px 0px 15px 0px;
   border-bottom: 1px solid #e0e0e0;
   transition: all 0.3s;
+  text-decoration: none;
+  color: white;
 }
 
 .konten .konten-sampingan .section.kategories ul li a:hover {
   padding-left: 10px;
   transition: all 0.3s;
+}
+
+/* Single Konten */
+.konten .konten-utama.single {
+  background: steelblue;
+  padding: 20px 50px;
+  font-size: 1.1em;
+  border-radius: 5px;
+}
+
+.konten .konten-utama.single .konten-postingan {
+  color: white;
+}
+
+.konten .konten-sampingan.single {
+  padding: 0px 10px;
+  color: white;
+}
+
+.konten .konten-utama.single .judul-postingan {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.konten .postingan-populer .postingan {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.konten .postingan-populer .postingan a {
+  text-decoration: none;
+  color: white;
+}
+
+.konten .postingan-populer .postingan a h4 {
+  margin-top: 15px;
+}
+
+.konten .postingan-populer .postingan img {
+  height: 60px;
+  width: 75px;
+  float: left;
+  margin-right: 10px;
 }

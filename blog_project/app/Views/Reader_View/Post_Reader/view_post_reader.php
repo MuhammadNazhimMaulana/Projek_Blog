@@ -13,7 +13,7 @@ $submit = [
   'name' => 'submit',
   'value' => 'Cari',
   'type' =>'submit',
-  'class' => 'btn btn-outline-secondary'
+  'class' => 'btn btn-outline-dark'
 ];
 
 ?>
@@ -31,12 +31,12 @@ $submit = [
         <div class="postingan">
             <img src="<?= base_url('General/images/Rhino.jpg')?>" class="gambar-postingan">
             <div class="preview-postingan">
-                <h2><a href="<?= site_url('Reader/Post_R/view/') ?>"><?= $posts->judul_post ?></a></h2>
+                <h2><a href="<?= site_url('Reader/Post_R/view/'. $posts->id_post) ?>"><?= $posts->judul_post ?></a></h2>
                 <i class="far fa-user"> <?= $posts->nama ?></i>
                 &nbsp;
                 <i class="fas fa-calendar-week"> <?= $posts->created_at ?></i>
                 <p class="preview-text"><?= $posts->summary ?></p>
-                <a href="<?= site_url('Reader/Post_R/view/') ?>" class="btn-baca read-more">Read More</a>
+                <a href="<?= site_url('Reader/Post_R/view/'. $posts->id_post) ?>" class="btn-baca read-more">Read More</a>
             </div>
         </div>
         <?php endforeach ?>
@@ -64,7 +64,9 @@ $submit = [
         <div class="section kategories">
             <h2 class="judul-section">Kategori</h2>
             <ul>
-                <li><a href="#">Nama Kategori</a></li>
+                <?php foreach ($kategory as $index => $kategories) :?>
+                    <li><a href="<?= site_url('Reader/Kategory_R/view/' . $kategories->id_kategory) ?>"><?= $kategories->nama_kategori ?></a></li>
+                <?php endforeach ?>
             </ul>
         </div>
     </div>
