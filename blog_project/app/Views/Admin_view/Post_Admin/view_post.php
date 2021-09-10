@@ -66,9 +66,9 @@ $submit = [
                   <td><?= $posts->judul_post ?></td>
                   <td><?= $posts->slug ?></td>
                   <td><?= $posts->summary ?></td>
-                  <td><?= $posts->body ?></td>
+                  <td><?= word_limiter($posts->body, 5) ?></td>
                   <td><img src="<?= base_url('upload/Foto Blog/' . $posts->foto_blog) ?>" alt="" width="100"></td>
-                  <td>
+                  <td class="col-md-3">
                     <a href="<?= site_url('Admin/Post_A/view/' . $posts->id_post) ?>" class="btn btn-primary">View</a>
                     <a href="<?= site_url('Admin/Post_A/update/' . $posts->id_post) ?>" class="btn btn-warning">Update</a>
                     <a href="#modalDelete<?= $posts->id_post ?>" data-bs-toggle="modal" onclick="" class="btn btn-danger">Delete</a>

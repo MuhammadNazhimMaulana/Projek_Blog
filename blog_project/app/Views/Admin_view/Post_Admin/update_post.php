@@ -117,7 +117,7 @@ $errors = $session->getFlashdata('errors');
 
                 <div class="form-group mt-3">
                     <?= form_label("Isi Postingan", "body") ?>
-                    <?= form_input($body) ?>
+                    <?= form_textarea($body) ?>
                 </div>
 
                 <div class="text-center">
@@ -141,5 +141,23 @@ $errors = $session->getFlashdata('errors');
         </div>
     </div>
 </div>
+
+<?= $this->endSection() ?>
+
+<!-- Memanggil CKeditor -->
+<?= $this->section('script') ?>
+
+<script src="<?= base_url('ckeditor5/ckeditor.js') ?>"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#body'),{
+            
+        }).then(editor=>{
+            console.log(editor);
+        }).catch(error=>{
+            console.log(editor);
+
+        });
+</script>
 
 <?= $this->endSection() ?>

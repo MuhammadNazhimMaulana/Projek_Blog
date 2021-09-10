@@ -80,7 +80,7 @@ class Validation
 
 	public $login = [
 		'username' => [
-			'rules' => 'required|min_length[5]',
+			'rules' => 'required|min_length[3]',
 		],
 		'password' => [
 			'rules' => 'required',
@@ -90,7 +90,7 @@ class Validation
 	public $login_errors = [
 		'username' => [
 			'required' => '{field} Harus diisi',
-			'min_length' => '{field} Minimal 5 karakter,'
+			'min_length' => '{field} Minimal 3 karakter,'
 		],
 		'password' => [
 			'required' => '{field} Harus diisi',

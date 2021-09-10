@@ -20,6 +20,9 @@ class Post_A extends BaseController
 
         // Load Session
         $this->session = session();
+
+        // Memanggil Text Helper
+        helper('text');
     }
 
     public function read()
@@ -119,6 +122,7 @@ class Post_A extends BaseController
         }
         return view('Admin_View/Post_Admin/create_post', $data);
     }
+
 
     public function update()
     {

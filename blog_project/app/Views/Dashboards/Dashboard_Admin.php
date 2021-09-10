@@ -33,5 +33,7 @@
     <!-- Link JS Custom -->
     <script src="<?= base_url('General/js/main_admin.js')?>"></script>
 
+    <?= $this->renderSection('script') ?>
+
 </body>
 </html>

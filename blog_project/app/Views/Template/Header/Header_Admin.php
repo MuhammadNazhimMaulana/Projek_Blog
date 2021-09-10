@@ -1,3 +1,4 @@
+<?php $role = session()->get('role')?>
 
     <!-- Awal Sidebar -->
     <header class="header" id="header">
@@ -23,7 +24,7 @@
                         <i class="fas fa-th-large nav__icon"></i>
                         <span class="nav__name">Dashboard</span>
                     </a>
-
+                    <?php if ($role === "0") : ?>
                     <a href="<?= site_url('Admin/Pengguna_A/profile') ?>" class="nav__link <?= $title == 'Pengguna' ? 'active' : ''?>">
                         <i class="fas fa-user nav__icon"></i>
                         <span class="nav__name">User</span>
@@ -43,7 +44,18 @@
                         <i class="far fa-comment-dots nav__icon"></i>
                         <span class="nav__name">Komentar</span>
                     </a>
+                    <?php endif; ?>
+                    <?php if ($role === "1") : ?>
+                    <a href="<?= site_url('Admin/Pengguna_A/profile') ?>" class="nav__link <?= $title == 'Pengguna' ? 'active' : ''?>">
+                        <i class="fas fa-user nav__icon"></i>
+                        <span class="nav__name">User</span>
+                    </a>
 
+                    <a href="<?= site_url('Admin/Post_A/read') ?>" class="nav__link <?= $title == 'Post' ? 'active' : ''?>">
+                        <i class="fas fa-blog nav__icon"></i>
+                        <span class="nav__name">Post</span>
+                    </a>
+                    <?php endif; ?>
                 </div>
             </div>
 

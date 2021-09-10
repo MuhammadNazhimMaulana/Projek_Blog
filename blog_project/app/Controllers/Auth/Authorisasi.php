@@ -38,6 +38,7 @@ class Authorisasi extends BaseController
 
                 // Dapatkan data yang telah di input
                 $pengguna->fill($data);
+                $pengguna->role = 1;
                 $pengguna->created_at = date("Y-m-d H:i:s");
                 $pengguna->password = $this->request->getPost('password');
 
@@ -63,7 +64,7 @@ class Authorisasi extends BaseController
             $errors = $this->validation->getErrors();
 
             if ($errors) {
-                return view('login');
+                return view('Admin_View/Auth_Admin/Login_admin_view');
             }
 
             $model = new Pengguna_M();
@@ -81,13 +82,17 @@ class Authorisasi extends BaseController
                     'username' => $user->username,
                     'id_pengguna' => $user->id_pengguna,
                     'email' => $user->email,
+                    'role' => $user->role,
                     'isLoggedIn' => TRUE
                 ];
 
                 $this->session->set($session_data);
 
-                return redirect()->to(site_url('Admin/Pengguna_A'));
+                return redirect()->to(site_url('Admin/Pengguna_A/index'));
             }
+            
+            $this->session->setFlashdata('errors', $errors);
+            
         }
         return view('Admin_View/Auth_Admin/Login_admin_view');
     }
