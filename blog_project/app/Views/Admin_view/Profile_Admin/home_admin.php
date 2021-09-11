@@ -37,20 +37,20 @@
     </div>
     <div class="col-md-4">
         <div class="card text-dark bg-light mb-3">
-            <div class="card-header text-center">Jumlah Pengembalian</div>
+            <div class="card-header text-center">Jumlah Komentar</div>
             <div class="card-body">
                 <div class="container-white">
-                    <canvas id="pengembalian" width="400" height="400"></canvas>
+                    <canvas id="komentar" width="400" height="400"></canvas>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card text-dark bg-light mb-3">
-            <div class="card-header text-center">Jumlah Buku</div>
+            <div class="card-header text-center">Jumlah Penulis</div>
             <div class="card-body">
                 <div class="container-white">
-                    <canvas id="buku" width="400" height="400"></canvas>
+                    <canvas id="pengguna" width="400" height="400"></canvas>
                 </div>
             </div>
         </div>
@@ -85,6 +85,60 @@
     var chart_post = new Chart(kategori_post, {
         type: 'doughnut',
         data: data_jumlah_per_post
+    });
+
+    // Chart Untuk Komentar
+    var kategori_komentar = document.getElementById('komentar');
+    var data_komentar = [];
+    var label_komentar = [];
+
+    <?php foreach ($jumlah_per_komentar->getResult() as $key => $value) : ?>
+        data_komentar.push(<?= $value->jumlah ?>);
+        label_komentar.push('<?= $value->user ?>');
+    <?php endforeach ?>
+
+    var data_jumlah_per_komentar = {
+        datasets: [{
+            data: data_komentar,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+            ],
+        }],
+        labels: label_komentar,
+    }
+
+    var chart_komentar = new Chart(kategori_komentar, {
+        type: 'doughnut',
+        data: data_jumlah_per_komentar
+    });
+
+    // Chart Untuk Pengguna
+    var kategori_pengguna = document.getElementById('pengguna');
+    var data_pengguna = [];
+    var label_pengguna = [];
+
+    <?php foreach ($jumlah_per_pengguna->getResult() as $key => $value) : ?>
+        data_pengguna.push(<?= $value->jumlah ?>);
+        label_pengguna.push('<?= $value->user ?>');
+    <?php endforeach ?>
+
+    var data_jumlah_per_pengguna = {
+        datasets: [{
+            data: data_pengguna,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+            ],
+        }],
+        labels: label_pengguna,
+    }
+
+    var chart_pengguna = new Chart(kategori_pengguna, {
+        type: 'doughnut',
+        data: data_jumlah_per_pengguna
     });
 </script>
 

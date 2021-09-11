@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Post_M;
 use App\Models\Kategory_M;
 use App\Models\Pengguna_M;
+use App\Models\Komentar_M;
 use App\Entities\Post_E;
 
 class Post_R extends BaseController
@@ -54,7 +55,11 @@ class Post_R extends BaseController
 
         $model = new Post_M();
 
+        // Model Untuk Kategori
         $model_kategory = new Kategory_M();
+
+        // Model Untuk Kategori
+        $model_komentar = new Komentar_M();
 
         $post = $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->where('tbl_post.id_post', $id_post)->first();
 
@@ -63,6 +68,7 @@ class Post_R extends BaseController
             'postingan' => $model->join('tbl_pengguna', 'tbl_pengguna.id_pengguna = tbl_post.id_pengguna')->join('tbl_kategory', 'tbl_kategory.id_kategory = tbl_post.id_kategory')->paginate(3, 'post'),
             'pager' => $model->pager,
             'kategory' => $model_kategory->paginate(3, 'kategory'),
+            'komentar' => $model_komentar->paginate(3, 'komentar'),
             'title' => 'Post'
         ];
 

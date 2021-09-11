@@ -25,11 +25,11 @@ $submit = [
     <div class="card text-dark bg-light mb-3">
       <div class="card-header"></div>
       <div class="card-body">
-        <a href="<?= site_url('Admin/Komentar_A/create') ?>" class="btn btn-success">Tambah Komentar</a>
+        <a href="<?= site_url('admin/comments/create') ?>" class="btn btn-success">Tambah Komentar</a>
         <h5 class="card-title text-center mb-3">Daftar Seluruh Komentar</h5>
 
         <!-- Awal Searching -->
-        <?= form_open('Admin/Komentar_A/read') ?>
+        <?= form_open('admin/comments') ?>
         <div class="input-group mb-3 justify-content-end">
               <div>
                 <?= form_input($keyword) ?>
@@ -61,8 +61,8 @@ $submit = [
               <td><?= $comments->judul_post ?></td>
               <td><?= $comments->isi_komentar ?></td>
               <td>
-                <a href="<?= site_url('Admin/Komentar_A/view/' . $comments->id_komentar) ?>" class="btn btn-primary">View</a>
-                <a href="<?= site_url('Admin/Komentar_A/update/' . $comments->id_komentar) ?>" class="btn btn-warning">Update</a>
+                <a href="<?= site_url('admin/comments/view/' . $comments->id_komentar) ?>" class="btn btn-primary">View</a>
+                <a href="<?= site_url('admin/comments/update/' . $comments->id_komentar) ?>" class="btn btn-warning">Update</a>
                 <a href="#modalDelete<?= $comments->id_komentar ?>" data-bs-toggle="modal" onclick="" class="btn btn-danger">Delete</a>
               </td>
             </tr>
@@ -90,7 +90,7 @@ $submit = [
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button class="btn btn-danger"><a href="<?= site_url('Admin/Komentar_A/delete/' . $comments->id_komentar) ?>">Delete</a></button>
+            <button class="btn btn-danger"><a href="<?= site_url('admin/comments/delete/' . $comments->id_komentar) ?>">Delete</a></button>
           </div>
         </div>
       </div>

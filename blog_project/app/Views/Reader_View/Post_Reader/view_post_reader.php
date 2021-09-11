@@ -36,7 +36,7 @@ $submit = [
                 &nbsp;
                 <i class="fas fa-calendar-week"> <?= $posts->created_at ?></i>
                 <p class="preview-text"><?= $posts->summary ?></p>
-                <a href="<?= site_url('Reader/Post_R/view/'. $posts->id_post) ?>" class="btn-baca read-more">Read More</a>
+                <a href="<?= site_url('reader/posts/view/'. $posts->id_post) ?>" class="btn-baca read-more">Read More</a>
             </div>
         </div>
         <?php endforeach ?>
@@ -48,7 +48,7 @@ $submit = [
             <h2 class="judul-section">Search</h2>
             
                 <!-- Awal Searching -->
-                <?= form_open('Admin/Post_A/read') ?>
+                <?= form_open('reader/posts') ?>
                 <div class="input-group mb-3 justify-content-center">
                     <div>
                         <?= form_input($keyword) ?>
@@ -65,7 +65,7 @@ $submit = [
             <h2 class="judul-section">Kategori</h2>
             <ul>
                 <?php foreach ($kategory as $index => $kategories) :?>
-                    <li><a href="<?= site_url('Reader/Kategory_R/view/' . $kategories->id_kategory) ?>"><?= $kategories->nama_kategori ?></a></li>
+                    <li><a href="<?= base_url('reader/categories/view/' . $kategories->id_kategory) ?>"><?= $kategories->nama_kategori ?></a></li>
                 <?php endforeach ?>
             </ul>
         </div>

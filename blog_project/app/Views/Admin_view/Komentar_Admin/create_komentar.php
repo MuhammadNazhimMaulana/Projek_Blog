@@ -57,7 +57,7 @@ $errors = $session->getFlashdata('errors');
                 <?php endif ?>
 
                 <!-- Membuat Form dengan Form Helper -->
-                <?= form_open('Admin/Komentar_A/create') ?>
+                <?= form_open('admin/comments/create') ?>
 
                 <div class="form-group mt-3">
                         <?= form_label("Judul Postingan", "id_post") ?>

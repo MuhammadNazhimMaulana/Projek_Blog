@@ -88,7 +88,7 @@ $errors = $session->getFlashdata('errors');
                 <?php endif ?>
 
                 <!-- Membuat Form dengan Form Helper -->
-                <?= form_open_multipart('Admin/Post_A/update/' . $post->id_post) ?>
+                <?= form_open_multipart('admin/posts/update/' . $post->id_post) ?>
 
                 <div class="form-group mt-3">
                         <?= form_label("Nama Kategori", "id_kategory") ?>

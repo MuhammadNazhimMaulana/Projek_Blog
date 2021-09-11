@@ -25,11 +25,11 @@ $submit = [
     <div class="card text-dark bg-light mb-3">
       <div class="card-header"></div>
       <div class="card-body">
-        <a href="<?= site_url('Admin/Post_A/create') ?>" class="btn btn-success">Tambah Postingan</a>
+        <a href="<?= site_url('admin/posts/create') ?>" class="btn btn-success">Tambah Postingan</a>
         <h5 class="card-title text-center">Daftar Seluruh Postingan</h5>
 
         <!-- Awal Searching -->
-        <?= form_open('Admin/Post_A/read') ?>
+        <?= form_open('admin/posts') ?>
         <div class="input-group mb-3 justify-content-end">
               <div>
                 <?= form_input($keyword) ?>
@@ -69,8 +69,8 @@ $submit = [
                   <td><?= word_limiter($posts->body, 5) ?></td>
                   <td><img src="<?= base_url('upload/Foto Blog/' . $posts->foto_blog) ?>" alt="" width="100"></td>
                   <td class="col-md-3">
-                    <a href="<?= site_url('Admin/Post_A/view/' . $posts->id_post) ?>" class="btn btn-primary">View</a>
-                    <a href="<?= site_url('Admin/Post_A/update/' . $posts->id_post) ?>" class="btn btn-warning">Update</a>
+                    <a href="<?= site_url('admin/posts/view/' . $posts->id_post) ?>" class="btn btn-primary">View</a>
+                    <a href="<?= site_url('admin/posts/update/' . $posts->id_post) ?>" class="btn btn-warning">Update</a>
                     <a href="#modalDelete<?= $posts->id_post ?>" data-bs-toggle="modal" onclick="" class="btn btn-danger">Delete</a>
                   </td>
                 </tr>
@@ -98,7 +98,7 @@ $submit = [
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger"><a href="<?= site_url('Admin/Post_A/delete/' . $posts->id_post) ?>">Delete</a></button>
+                <button class="btn btn-danger"><a href="<?= site_url('admin/posts/delete/' . $posts->id_post) ?>">Delete</a></button>
               </div>
             </div>
           </div>

@@ -43,7 +43,7 @@ $errors = $session->getFlashdata('errors');
                 <?php endif ?>
 
                 <!-- Membuat Form dengan Form Helper -->
-                <?= form_open('Auth/Authorisasi/login') ?>
+                <?= form_open('/Auth/Authorisasi/login') ?>
                 <div class="form-group mt-3">
                     <?= form_label("Username", "username") ?>
                     <?= form_input($username) ?>

@@ -50,7 +50,7 @@ $errors = $session->getFlashdata('errors');
                 <?php endif ?>
 
                 <!-- Membuat Form dengan Form Helper -->
-                <?= form_open('Admin/Kategory_A/update/' . $kategory->id_kategory) ?>
+                <?= form_open('admin/categories/update/' . $kategory->id_kategory) ?>
                 <div class="form-group mt-3">
                     <?= form_label("Nama Kategori", "nama_kategori") ?>
                     <?= form_input($nama_kategori) ?>

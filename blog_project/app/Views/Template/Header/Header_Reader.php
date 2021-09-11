@@ -10,13 +10,13 @@
             <div class="collapse navbar-collapse" id="Menu_Navbar">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link <?= $title == 'Dashboard' ? 'active' : ''?>">Home</a>
+                        <a href="<?= base_url('reader/') ?>" class="nav-link <?= $title == 'Dashboard' ? 'active' : ''?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= site_url('Reader/Post_R/read') ?>" class="nav-link <?= $title == 'Post' ? 'active' : ''?>">Post</a>
+                        <a href="<?= base_url('reader/posts') ?>" class="nav-link <?= $title == 'Post' ? 'active' : ''?>">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= site_url('Reader/Kategory_R/read') ?>" class="nav-link <?= $title == 'Kategory' ? 'active' : ''?>">Kategori</a>
+                        <a href="<?= base_url('reader/categories') ?>" class="nav-link <?= $title == 'Kategory' ? 'active' : ''?>">Kategori</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Gallery</a>

@@ -378,6 +378,7 @@ body {
 
 .konten .konten-utama.single .konten-postingan {
   color: white;
+  min-height: 900px;
 }
 
 .konten .konten-sampingan.single {
@@ -411,4 +412,11 @@ body {
   width: 75px;
   float: left;
   margin-right: 10px;
+}
+
+/* Bagian Komentar Reader */
+
+.konten .konten-sampingan .postingan.clearfix .judul-komen {
+  color: white;
+  font-size: 25px;
 }

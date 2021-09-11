@@ -32,7 +32,7 @@
             <h2 class="judul-section">Kategori</h2>
             <ul>
                 <?php foreach ($kategory_more as $index => $kategories) :?>
-                    <li><a href="#"><?= $kategories->nama_kategori ?></a></li>
+                    <li><a href="<?= base_url('reader/categories/view/' . $kategories->id_kategory) ?>"><?= $kategories->nama_kategori ?></a></li>
                 <?php endforeach ?>
             </ul>
         </div>

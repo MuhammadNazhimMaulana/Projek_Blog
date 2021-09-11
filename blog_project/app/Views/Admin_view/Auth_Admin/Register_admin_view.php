@@ -69,7 +69,7 @@ $errors = $session->getFlashdata('errors');
                 <?php endif ?>
 
                 <!-- Membuat Form dengan Form Helper -->
-                <?= form_open('Auth/Authorisasi/register') ?>
+                <?= form_open('/Auth/Authorisasi/register') ?>
                 <div class="form-group mt-3">
 
                     <!-- Labelnya Nama User (text) untuk elemen bernama username -->
@@ -106,7 +106,7 @@ $errors = $session->getFlashdata('errors');
                 <?= form_close() ?>
             </div>
             <div class="card-footer">
-                <a href="<?= site_url('login') ?>"><small>Sudah Memiliki Akun?</small></a>
+                <a href="<?= base_url('login') ?>"><small>Sudah Memiliki Akun?</small></a>
             </div>
         </div>
     </div>
