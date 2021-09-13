@@ -99,7 +99,7 @@ class Validation
 
 	public $kategory = [
 		'nama_kategori' => [
-			'rules' => 'required',
+			'rules' => 'required|is_unique[tbl_kategory.nama_kategori]',
 		],
 		'slug_kategori' => [
 			'rules' => 'required',
@@ -109,6 +109,7 @@ class Validation
 	public $kategory_errors = [
 		'nama_kategori' => [
 			'required' => '{field} Harus diisi',
+			'is_unique' => 'Kategori yang dimasukksan Sudah Ada'
 		],
 		'slug_kategori' => [
 			'required' => '{field} Harus diisi',
