@@ -1,5 +1,5 @@
-<?= $this->extend('Dashboards/Dashboard_User') ?>
-<?= $this->section('content_user') ?>
+<?= $this->extend('Dashboards/Dashboard_Auth') ?>
+<?= $this->section('content_auth') ?>
 <?php
     
     $nama = [

@@ -420,3 +420,12 @@ body {
   color: white;
   font-size: 25px;
 }
+
+/* Kategori */
+.kategori {
+  width: 100% !important;
+}
+
+.konten .konten-sampingan.kategori-samping {
+  margin-top: 6.5%;
+}

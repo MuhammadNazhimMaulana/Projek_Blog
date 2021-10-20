@@ -22,6 +22,27 @@ class Kategory_R extends BaseController
         $this->session = session();
     }
 
+    public function read()
+    {
+        $model = new Kategory_M();
+
+        $keyword = '';
+
+        if($this->request->getPost())
+        {
+            $keyword = $this->request->getPost('keyword');
+        }
+
+        $data = [
+            "kategory" => $model->like('tbl_kategory.nama_kategori', $keyword)->paginate(3, 'kategory'),
+            "pager" => $model->pager,
+            "title" => 'Kategory',
+            "keyword" => $keyword
+        ];
+
+        return view('Reader_View/Kategory_Reader/view_kategory_reader', $data);
+    }
+
     public function view()
     {
         // Dapatkan Id dari segmen

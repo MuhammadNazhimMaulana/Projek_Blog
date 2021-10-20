@@ -14,19 +14,19 @@
         <div class="postingan">
             <img src="<?= base_url('General/images/Rhino.jpg')?>" class="gambar-postingan">
             <div class="preview-postingan">
-                <h2><a href="<?= site_url('Reader/Post_R/view/'. $posts->id_post) ?>"><?= $posts->judul_post ?></a></h2>
+                <h2><a href="<?= site_url('reader/posts/view/'. $posts->id_post) ?>"><?= $posts->judul_post ?></a></h2>
                 <i class="far fa-user"> <?= $posts->nama ?></i>
                 &nbsp;
                 <i class="fas fa-calendar-week"> <?= $posts->created_at ?></i>
                 <p class="preview-text"><?= $posts->summary ?></p>
-                <a href="<?= site_url('Reader/Post_R/view/'. $posts->id_post) ?>" class="btn-baca read-more">Read More</a>
+                <a href="<?= site_url('reader/posts/view/'. $posts->id_post) ?>" class="btn-baca read-more">Read More</a>
             </div>
         </div>
         <?php endforeach ?>
     </div>
     <!-- Konten Utama -->
     
-    <div class="konten-sampingan">
+    <div class="konten-sampingan kategori-samping">
 
         <div class="section kategories">
             <h2 class="judul-section">Kategori</h2>
